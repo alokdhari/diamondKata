@@ -17,16 +17,17 @@ namespace DiamondKata.Tests
             result.Should().Be(character.ToString());
         }
 
-        [Test]
-        public void ShouldPrintFlatTextOfDepthTwoForBAsDiamond()
+        [TestCase("B")]
+        [TestCase("C")]
+        [TestCase("D")]
+        [TestCase("F")]
+        public void ShouldBeAbleToPrintDiamond(char midPointCharacter)
         {
             // Arrange
-            var character = 'B';
+            var expectedDiamond = File.ReadAllText($"./TestFiles/diamond{midPointCharacter}.txt");
 
             // Act
-            var result = new DiamondPrinter().Print(character);
-
-            var expectedDiamond = File.ReadAllText(@"./TestFiles/diamondB.txt");
+            var result = new DiamondPrinter().Print(midPointCharacter);
 
             // Assert
             result.Should().Be(expectedDiamond);
