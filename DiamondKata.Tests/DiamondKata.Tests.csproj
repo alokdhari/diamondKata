@@ -10,12 +10,20 @@
 
   <ItemGroup>
     <None Remove="TestFiles\diamondB.txt" />
+    <None Remove="TestFiles\diamondBWithUnderScores.txt" />
     <None Remove="TestFiles\diamondC.txt" />
     <None Remove="TestFiles\diamondD.txt" />
     <None Remove="TestFiles\diamondF.txt" />
+    <None Remove="TestFiles\diamondFWithUnderScores.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="TestFiles\diamondBWithUnderScores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\diamondFWithUnderScores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestFiles\diamondF.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

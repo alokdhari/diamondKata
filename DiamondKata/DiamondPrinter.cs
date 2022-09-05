@@ -6,14 +6,16 @@ public class DiamondPrinter
     /// The character that will be the mid point of the diamond.
     /// </summary>
     private readonly char midPointCharacter;
+    private readonly char emptySpaceCharacterToUse;
 
     /// <summary>
     /// Constuctor
     /// </summary>
     /// <param name="midPointCharacter"></param>
-    public DiamondPrinter(char midPointCharacter)
+    public DiamondPrinter(char midPointCharacter, char emptySpaceCharacterToUse = ' ')
     {
         this.midPointCharacter = midPointCharacter;
+        this.emptySpaceCharacterToUse = emptySpaceCharacterToUse;
     }
 
     /// <summary>
@@ -50,9 +52,9 @@ public class DiamondPrinter
         return diamond.ToString();
     }
 
-    private static string CreateDiamonRow(int firstPositionToPrintCharacterIn, int depth, char charactedInThisRow)
+    private string CreateDiamonRow(int firstPositionToPrintCharacterIn, int depth, char charactedInThisRow)
     {
-        var arrayWithSpaces = new string(' ', depth).ToCharArray();
+        var arrayWithSpaces = new string(emptySpaceCharacterToUse, depth).ToCharArray();
         arrayWithSpaces[firstPositionToPrintCharacterIn] = charactedInThisRow;
         if (arrayWithSpaces.Length > 1)
         {

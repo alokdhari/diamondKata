@@ -32,5 +32,19 @@ namespace DiamondKata.Tests
             // Assert
             result.Should().Be(expectedDiamond);
         }
+
+        [TestCase("B")]
+        [TestCase("F")]
+        public void ShouldBeAbleToPrintDiamondWithUnderScoreForBetterVisualisation(char midPointCharacter)
+        {
+            // Arrange
+            var expectedDiamond = File.ReadAllText($"./TestFiles/diamond{midPointCharacter}WithUnderScores.txt");
+
+            // Act
+            var result = new DiamondPrinter(midPointCharacter, '_').Print();
+
+            // Assert
+            result.Should().Be(expectedDiamond);
+        }
     }
 }
