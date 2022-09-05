@@ -18,7 +18,7 @@ namespace DiamondKata.Tests
         }
 
         [Test]
-        public void ShouldPrintFlatTextOfDepthTwoForB()
+        public void ShouldPrintFlatTextOfDepthTwoForBAsDiamond()
         {
             // Arrange
             var character = 'B';
@@ -26,8 +26,10 @@ namespace DiamondKata.Tests
             // Act
             var result = new DiamondPrinter().Print(character);
 
+            var expectedDiamond = File.ReadAllText(@"./TestFiles/diamondB.txt");
+
             // Assert
-            result.Should().Be("ABBA");
+            result.Should().Be(expectedDiamond);
         }
     }
 }
