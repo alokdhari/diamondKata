@@ -1,3 +1,5 @@
+using FluentAssertions;
+
 namespace DiamondKata.Tests
 {
     public class DiamondPrinterTests
@@ -12,8 +14,20 @@ namespace DiamondKata.Tests
             var result = new DiamondPrinter().Print(character);
 
             // Assert
+            result.Should().Be(character.ToString());
+        }
 
-            result.ShouldBe(character.ToString());
+        [Test]
+        public void ShouldPrintFlatTextOfDepthTwoForB()
+        {
+            // Arrange
+            var character = 'B';
+
+            // Act
+            var result = new DiamondPrinter().Print(character);
+
+            // Assert
+            result.Should().Be("ABBA");
         }
     }
 }
