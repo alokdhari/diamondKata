@@ -5,34 +5,29 @@ public class DiamondPrinter
     public string Print(char midPointCharacter)
     {
         var characterIndex = midPointCharacter - 'A' + 1;
-        if(characterIndex == 1)
-        {
-            return "A";
-        }
-
-        var positionToPrintCharacterIn = characterIndex;
+        var firstPositionToPrintCharacterIn = characterIndex;
         var diamond = new StringBuilder();
         var depth = characterIndex * 2 - 1;
         var isPrintingBottomHalfOfDiamond = false;
-        for (var index = 0; index < depth; index++)
+        for (var rowNumber = 0; rowNumber < depth; rowNumber++)
         {
             var charactedInThisRow = (char)(isPrintingBottomHalfOfDiamond 
-                ? 'A' + depth - index - 1 
-                : 'A' + index);
+                ? 'A' + depth - rowNumber - 1 
+                : 'A' + rowNumber);
 
-            positionToPrintCharacterIn = isPrintingBottomHalfOfDiamond ? ++positionToPrintCharacterIn : --positionToPrintCharacterIn;
+            firstPositionToPrintCharacterIn = isPrintingBottomHalfOfDiamond ? ++firstPositionToPrintCharacterIn : --firstPositionToPrintCharacterIn;
             
             var arrayWithSpaces = new string(' ', depth).ToCharArray();
-            arrayWithSpaces[positionToPrintCharacterIn] = charactedInThisRow;
+            arrayWithSpaces[firstPositionToPrintCharacterIn] = charactedInThisRow;
             if (arrayWithSpaces.Length > 1)
             {
-                arrayWithSpaces[arrayWithSpaces.Length - positionToPrintCharacterIn - 1] = charactedInThisRow;
+                arrayWithSpaces[arrayWithSpaces.Length - firstPositionToPrintCharacterIn - 1] = charactedInThisRow;
             }
 
             diamond.Append(arrayWithSpaces);
-            isPrintingBottomHalfOfDiamond = isPrintingBottomHalfOfDiamond || 'A' + index == midPointCharacter;
+            isPrintingBottomHalfOfDiamond = isPrintingBottomHalfOfDiamond || 'A' + rowNumber == midPointCharacter;
 
-            if (index + 1 != depth)
+            if (rowNumber + 1 != depth)
             {
                 diamond.Append(Environment.NewLine);
             }
