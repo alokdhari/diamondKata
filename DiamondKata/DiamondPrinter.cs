@@ -2,28 +2,44 @@
 
 public class DiamondPrinter
 {
-    public string Print(char midPointCharacter)
+    /// <summary>
+    /// The character that will be the mid point of the diamond.
+    /// </summary>
+    private readonly char midPointCharacter;
+
+    /// <summary>
+    /// Constuctor
+    /// </summary>
+    /// <param name="midPointCharacter"></param>
+    public DiamondPrinter(char midPointCharacter)
     {
-        var characterIndex = midPointCharacter - 'A' + 1;
-        var firstPositionToPrintCharacterIn = characterIndex;
+        this.midPointCharacter = midPointCharacter;
+    }
+
+    /// <summary>
+    /// Print the diamond using the initialized mid point character
+    /// </summary>
+    /// <returns></returns>
+    public string Print()
+    {
+        var firstPositionToPrintCharacterIn = midPointCharacter - 'A' + 1;
         var diamond = new StringBuilder();
-        var depth = characterIndex * 2 - 1;
+        var depthOfDiamond = firstPositionToPrintCharacterIn * 2 - 1;
         var isPrintingBottomHalfOfDiamond = false;
 
-        for (var rowNumber = 0; rowNumber < depth; rowNumber++)
+        for (var rowNumber = 0; rowNumber < depthOfDiamond; rowNumber++)
         {
             var currentCharactedToPrint = (char)(isPrintingBottomHalfOfDiamond
-                ? 'A' + depth - rowNumber - 1
+                ? 'A' + depthOfDiamond - rowNumber - 1
                 : 'A' + rowNumber);
 
             firstPositionToPrintCharacterIn = isPrintingBottomHalfOfDiamond ? ++firstPositionToPrintCharacterIn : --firstPositionToPrintCharacterIn;
             
-            var diamondRow = CreateDiamonRow(firstPositionToPrintCharacterIn, depth, currentCharactedToPrint);
+            var diamondRow = CreateDiamonRow(firstPositionToPrintCharacterIn, depthOfDiamond, currentCharactedToPrint);
 
             diamond.Append(diamondRow);
 
-            // dont add a line break on the last line.
-            if (rowNumber + 1 != depth)
+            if (rowNumber + 1 != depthOfDiamond)
             {
                 diamond.Append(Environment.NewLine);
             }

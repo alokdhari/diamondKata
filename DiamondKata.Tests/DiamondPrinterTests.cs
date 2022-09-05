@@ -8,13 +8,13 @@ namespace DiamondKata.Tests
         public void ShouldPrintDiamondOfOneDepth()
         {
             // Arrange
-            var character = 'A';
+            var midPointCharacter = 'A';
 
             // Act
-            var result = new DiamondPrinter().Print(character);
+            var result = new DiamondPrinter(midPointCharacter).Print();
 
             // Assert
-            result.Should().Be(character.ToString());
+            result.Should().Be(midPointCharacter.ToString());
         }
 
         [TestCase("B")]
@@ -27,7 +27,7 @@ namespace DiamondKata.Tests
             var expectedDiamond = File.ReadAllText($"./TestFiles/diamond{midPointCharacter}.txt");
 
             // Act
-            var result = new DiamondPrinter().Print(midPointCharacter);
+            var result = new DiamondPrinter(midPointCharacter).Print();
 
             // Assert
             result.Should().Be(expectedDiamond);

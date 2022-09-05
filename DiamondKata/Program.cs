@@ -1,4 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿var midPointCharacter = Environment.GetCommandLineArgs()[1].ToCharArray()[0];
 
-string name = Environment.GetCommandLineArgs()[1];
+Console.WriteLine(new DiamondPrinter(midPointCharacter).Print());
+
+// Wait for input
+Console.ReadLine();
